@@ -84,10 +84,13 @@
             animation: drift var(--fall-duration) linear forwards;
             transition: transform 0.1s;
             z-index: 10; 
+            
+            /* 顏色一律相同，拒絕作弊 */
+            background: #8c7665;
+            color: #fff;
+            border: 1px solid #b8a494;
         }
 
-        .word-real { background: #8c7665; color: #fff; border: 1px solid #b8a494; }
-        .word-fake { background: #d4af37; color: #1e1a19; border: 1px solid #fff; }
         .word-drop:active { transform: scale(0.85); }
 
         #commentary {
@@ -112,7 +115,6 @@
 
         .guide-text { max-width: 550px; line-height: 1.6; color: #bcaea5; margin-bottom: 5px; }
 
-        /* 🚀 調整：預設隱藏對照表，通關後才會顯示 */
         .meaning-container {
             display: none; 
             max-width: 800px;
@@ -143,7 +145,6 @@
     
     <div class="score-board">
         <div>得分: <span id="score">0</span> / 100</div>
-        <!-- 🚀 調整：時間延長到 60 秒 -->
         <div>剩餘時間: <span id="timer">60</span> 秒</div>
     </div>
 
@@ -152,10 +153,11 @@
         <div id="start-overlay" class="overlay">
             <h2>揭開宣傳背後的真實人生</h2>
             <p class="guide-text">
-                在陳列的文筆下，老兵不是宏大政治宣傳裡的「功勳英雄」，而是經歷「血汗勞動」卻被社會「邊緣化」的真實弱者。<br><br>
+                在陳列的文筆下，老兵不是官方政治宣傳裡的「不朽英雄」，而是富含複雜情感、承受時代命運卻被社會邊緣化的真實個體。<br><br>
                 <b>【遊戲規則】</b><br>
-                點擊消除代表老兵<b>「真實處境」的深色詞彙</b>（得分加分）。<br>
-                避開代表體制<b>「虛華政治宣傳」的金黃色詞彙</b>（點到會扣分）。<br>
+                所有詞彙的外觀皆完全相同！請仔細閱讀文字：<br>
+                點擊消除代表老兵<b>「真實情感與底層現實」的詞彙</b>（得分加分）。<br>
+                避開代表體制<b>「僵化口號與虛華包裝」的詞彙</b>（點到會扣分）。<br>
                 在 60 秒內衝滿 100 分即通關！通關後將解鎖完整意象解析。
             </p>
             <button class="start-btn" onclick="startGame()">開始作戰</button>
@@ -171,25 +173,24 @@
 
     <div id="commentary">📌 點擊正確詞彙後，這裡會浮現陳列文中的文學意象解析...</div>
 
-    <!-- 🚀 移入結算：預設 display:none，通關時才會登場 -->
+    <!-- 結算對照表 -->
     <div id="meaning-box" class="meaning-container">
         <h2>📚 【解鎖成功】詞彙與散文核心意象對照表</h2>
         <div class="meaning-grid">
             <!-- 左邊：真實處境 -->
             <div class="meaning-section">
-                <h3 style="color: #b88665; border-bottom: 1px dashed #b88665;">🤎 老兵的真實處境（深色詞彙）</h3>
-                <div class="meaning-item"><b>🛠️ 十字鎬 / 🧱 血汗勞動 / ⛰️ 荒野開路：</b> 代表老兵用身體與汗水鑿開中橫公路的艱險岩壁，是台灣現代化建設最無聲卻厚重的基底。</div>
-                <div class="meaning-item"><b>外宿 / 集體宿舍 / 🏚️ 榮民之家：</b> 座落在遠離熱鬧市區的偏遠角落，象徵老兵在晚年時被主流繁華體制放逐、隔絕的邊緣現實。</div>
-                <div class="meaning-item"><b>🥀 孤寂邊緣 / 🧓 衰老無助 / 🧵 破舊軍毯：</b> 揭示在冰冷的病床與極簡的物資背後，這群人無家無根、在生命暮年極度缺乏關懷的悲涼。</div>
-                <div class="meaning-item"><b>📜 斷裂鄉愁 / 📦 簡陋行李：</b> 一只皮箱與數十年的海峽相隔，隱喻小人物的命運被時代生生切斷，鄉愁成了走不回的遠方。</div>
-                <div class="meaning-item"><b>🪦 無名墓碑 / 🤝 老兵同袍 / 🌊 地上歲月：</b> 他們的名字沉沒在台灣的群山與泥土中，唯有同袍相依，是歷史洪流裡最容易被遺忘的姓名。</div>
+                <h3 style="color: #b88665; border-bottom: 1px dashed #b88665;">🤎 老兵的真實情感與現實（深色詞彙）</h3>
+                <div class="meaning-item"><b>🍂 思鄉情愁 / 📦 斷裂鄉愁 / 🕊️ 魂牽夢縈：</b> 雖然大時代切斷了歸鄉路，但他們對家鄉骨肉、親友的思念不曾因時間磨滅，是人性最柔軟的展現。</div>
+                <div class="meaning-item"><b>🪵 不屈不撓 / 🛠️ 堅韌生命 / 🧱 血汗勞動：</b> 面對險惡的荒野開路與嚴苛的底層勞動，他們以驚人的耐力與汗水生存下來，展現了庶民百姓的韌性。</div>
+                <div class="meaning-item"><b>🍵 淡泊名利 / 🤫 樸實無華 / 🤝 榮辱與共：</b> 退伍後的他們隱沒於山林荣家，不再追求功名，在簡陋平淡的生活中相依為命。</div>
+                <div class="meaning-item"><b>🏚️ 榮民之家 / 🥀 孤寂邊緣 / 🧓 衰老無助：</b> 陳列冷靜書寫了他們在晚年缺乏家庭溫暖、被社會繁華排除在外的真實弱勢悲涼。</div>
             </div>
             <!-- 右邊：虛華宣傳 -->
             <div class="meaning-section">
-                <h3 style="color: #d4af37; border-bottom: 1px dashed #d4af37;">💛 體制的虛華宣傳（金黃詞彙）</h3>
-                <div class="meaning-item"><b>🏆 勳章功勳 / 🎖️ 萬歲英雄 / 🏯 豐功偉業：</b> 官方宏大的政治宣傳，表面上對其歌功頌德，實際上卻掩蓋了他們退伍後跌落底層的貧困與悲慘現實。</div>
-                <div class="meaning-item"><b>⚔️ 反攻大陸 / 📢 政治號角 / 🛡️ 鋼鐵勁旅：</b> 虛妄且無法實現的政治口號，框限並撥弄了小人物的一生，讓他們在現實環境中顯得尷尬而無奈。</div>
-                <div class="meaning-item"><b>🤝 功成身退 / 🌟 神聖使命 / 👑 救國救民 / 📣 時代楷模：</b> 體制用美麗、神聖的名詞將老兵商品化，卻未曾在社會福利與心理層面上給予他們相應的尊嚴與生活照顧。</div>
+                <h3 style="color: #d4af37; border-bottom: 1px dashed #d4af37;">💛 體制的虛華包裝（金黃詞彙）</h3>
+                <div class="meaning-item"><b>🏆 豐功偉業 / 🎖️ 萬歲英雄 / 🏅 開國元勳 / 📜 國之棟樑：</b> 體制用來將老兵神話化的空洞政治修辭。表面上無比崇高，現實中卻未曾給予他們應有的尊嚴、社會福利與心理照顧。</div>
+                <div class="meaning-item"><b>⚔️ 反攻大陸 / 📢 政治號角 / 📯 復興先鋒 / 🛡️ 鋼鐵軍魂：</b> 這些無法實現的虛妄政治宣傳，將活生生的小人物禁錮在國家的戰爭機器中，抹煞了他們的獨立主體性。</div>
+                <div class="meaning-item"><b>🤝 功成身退 / 🌟 神聖使命 / 👑 時代楷模 / 💎 永垂不朽：</b> 用美麗而死板的道德大帽子將老兵符號化，成了歷史教科書上的宣傳工具，卻遮蔽了他們眼前的貧窮、病痛與無依。</div>
             </div>
         </div>
     </div>
@@ -202,29 +203,29 @@
         const meaningBox = document.getElementById('meaning-box');
 
         let score = 0;
-        let timeLeft = 60; // 🚀 調整：60秒
+        let timeLeft = 60; 
         let gameInterval;
         let spawnInterval;
         let isPlaying = false;
 
-        // 🚀 大幅追加詞庫（正面增加到 15 個）
+        // 🚀 特性詞彙融入：正面詞彙（包含思鄉、堅韌、淡泊等褒義情感與底層現實）
         const realWords = {
-            "🛠️ 十字鎬": "他們用手裡的十字鎬鑿開中橫公路的岩壁，留下了血汗與傷殘。",
-            "🏚️ 榮民之家": "老兵們最終集體收容在偏遠的榮民之家，在沒落的宿舍裡集體老去。",
+            "🍂 思鄉情愁": "他們心裡始終懸著遠方的家鄉，那是數十年海峽相隔也切不斷的血肉牽掛。",
+            "🪵 不屈不撓": "面對險峻的中央山脈與開路危機，他們用肉身硬生生鑿出道路，展現強大的生命韌性。",
+            "🍵 淡泊名利": "晚年的老兵不再追求世俗的功名富貴，在簡陋寂靜的榮家裡過著樸實的生活。",
+            "🤝 榮辱與共": "無親無故的孤單日子裡，背景相似的同袍成了彼此生命最後最扎實的依靠。",
+            "🏚️ 榮民之家": "老兵們最終集體收容在偏遠的榮民之家，在沒落的宿舍裡寂體老去。",
             "🧱 血汗勞動": "他們付出最廉價、密集的勞力，卻在完工後被繁華的都市給遺忘。",
             "🥀 孤寂邊緣": "退伍後無家無根，陳列冷靜書寫了他們被社會邊緣化的真實孤寂。",
-            "📜 斷裂鄉愁": "幾十年的海峽相隔，那一面是走不回的家，這一步是無依的現實。",
             "🌊 地上歲月": "他們的身影沉沒在台灣的群山與泥土中，是歷史裡最無聲的基底。",
-            "🩼 身心傷殘": "許多老兵在中橫開路時留下一輩子的殘疾，現實生活中極度缺乏醫療關懷。",
-            "🛌 集體宿舍": "在窄小的榮家床位上，他們只能和同樣命運的同袍抱團，與社會隔絕。",
-            "🧓 衰老無助": "時光流逝，曾經挺拔的軍人變成了在病床上無人探望、逐漸凋零的孤獨老人。",
-            "⛰️ 荒野開路": "在中央山脈的深山與險惡懸崖間，他們用雙手在荒野中開闢了道路。",
-            "🪦 無名墓碑": "死後草草安葬在山野一隅，墓碑上往往只刻著一排無人聞問的寂寞姓名。",
-            "🧵 破舊軍毯": "一件磨損發白的舊軍毯，是他們陪伴度過無數漂泊長夜唯一的溫度。",
-            "🤝 老兵同袍": "沒有家人親眷，唯有背景相似的同袍之間，能共同咀嚼大時代的悲歡。"
+            "🧓 衰老無助": "曾經挺拔的軍人變成了在病床上無人探望、逐漸凋零的孤獨老人。",
+            "⛰️ 荒野開路": "在深山與險惡懸崖間，他們用雙手在荒野中默默為這塊土地開闢了道路。",
+            "🛠️ 堅韌生命": "儘管被命運和體制撥弄，他們依然默默承受、在惡劣的環境中努力存活下來。",
+            "🕊️ 魂牽夢縈": "夢裡全是走不回的家鄉故土，這種深刻的惆悵構成了他們最真實的心理世界。",
+            "🤫 樸實無華": "沒有宏大敘事的修飾，他們日常的言談、一件破舊的夾克，都充滿市井小民的真誠。"
         };
 
-        // 🚀 大幅追加詞庫（負面增加到 12 個）
+        // 🚀 特性詞彙融入：負面詞彙（僵化空洞、政治宣傳、高帽子）
         const fakeWords = {
             "🏆 勳章功勳": "陳列拒絕用官方宏大的『功勳』來包裝老兵，那掩蓋了他們真實的悲慘現實。",
             "🎖️ 萬歲英雄": "被宣傳為英雄，但現實中他們卻是連生病住院都缺乏照料的無助弱者。",
@@ -233,17 +234,19 @@
             "🎖️ 榮譽至上": "虛無的榮譽稱號無法填補他們現實中貧困、孤單且缺乏依靠的晚年生活。",
             "🌟 神聖使命": "宏大的政治修辭，往往成了掩蓋他們被社會與國家遺忘的遮羞布。",
             "🤝 功成身退": "體制用一句『功成身退』打發了他們，卻未曾在社會上給予相應的尊嚴與照顧。",
-            "👑 救國救民": "美麗的口號無法轉化為一口熱飯，政治的宏大敘事在此顯得空洞而諷刺。",
-            "🛡️ 鋼鐵勁旅": "當年被視為鋼鐵般的部隊工具，老去後卻成了體制中不被重視的邊緣弱勢。",
-            "📣 時代楷模": "頭銜給得再響亮，也無法挽回他們被時代碾碎、無聲在角落枯萎的生命命運。"
+            "👑 時代楷模": "頭銜給得再響亮，也無法挽回他們被時代碾碎、無聲在角落枯萎的生命命運。",
+            "🏯 豐功偉業": "歷史書上記錄的是將軍的功績，而非這些在荒野中奉獻一生的小人物。",
+            "🏅 開國元勳": "政治神話給予的高帽子，與他們在榮民之家簡陋無光的真實生活形成強烈反差。",
+            "📜 國之棟樑": "虛華的政治標籤，將一個個活生生的人簡化為符號，抹煞了他們的真實痛苦。",
+            "💎 永垂不朽": "冰冷的歷史紀念碑字眼，遠不如給予他們晚年一絲真實的社會關懷與溫度。"
         };
 
         function startGame() {
             document.getElementById('start-overlay').style.display = 'none';
-            meaningBox.style.display = 'none'; // 開始時確保隱藏
+            meaningBox.style.display = 'none'; 
             isPlaying = true;
             score = 0;
-            timeLeft = 60; // 🚀 調整為60秒
+            timeLeft = 60; 
             scoreEl.innerText = score;
             timerEl.innerText = timeLeft;
 
@@ -255,32 +258,32 @@
                 }
             }, 1000);
 
-            spawnInterval = setInterval(spawnWord, 900);
+            spawnInterval = setInterval(spawnWord, 850);
         }
 
         function spawnWord() {
             if (!isPlaying) return;
 
             const wordDiv = document.createElement('div');
-            const isReal = Math.random() > 0.4;
+            const isReal = Math.random() > 0.45;
             
             let wordText = "";
             if (isReal) {
                 const keys = Object.keys(realWords);
                 wordText = keys[Math.floor(Math.random() * keys.length)];
-                wordDiv.className = "word-drop word-real";
+                wordDiv.className = "word-drop";
                 wordDiv.dataset.type = "real";
             } else {
                 const keys = Object.keys(fakeWords);
                 wordText = keys[Math.floor(Math.random() * keys.length)];
-                wordDiv.className = "word-drop word-fake";
+                wordDiv.className = "word-drop";
                 wordDiv.dataset.type = "fake";
             }
 
             wordDiv.innerText = wordText;
             
             const randomX = Math.random() * (stage.clientWidth - 180);
-            const duration = 4.5 + Math.random() * 2;
+            const duration = 4.2 + Math.random() * 2;
             
             wordDiv.style.left = randomX + 'px';
             wordDiv.style.setProperty('--fall-duration', duration + 's');
@@ -330,13 +333,13 @@
 
             if (isWin || score >= 100) {
                 endTitle.innerHTML = "🎉 戰役通關：看見真實歷史";
-                endDesc.innerHTML = `<b>最終得分：${score} 分</b><br><br>恭喜！你成功穿越了那些虛無的政治宣傳口號，捕捉到了老兵真正的『地上歲月』。誠如陳列所希望的，這篇散文不是為了構築神話，而是逼我們用平視的目光，去深刻紀念、凝視那些在台灣底層付出血汗、卻無聲老去的生命。<br><br>👉 <b>【往下拉】</b> 即可閱讀本次解鎖的完整文學核心意象解析！`;
+                endDesc.innerHTML = `<b>最終得分：${score} 分</b><br><br>恭喜！你成功穿越了那些虛無的政治宣傳口號，捕捉到了老兵真實的情感與『地上歲月』。誠如陳列所希望的，這篇散文不是為了構築僵化的英雄神話，而是逼我們用平視且帶有同理心的目光，去深刻紀念、凝視這群兼具韌性與悲涼、真實存在過的小人物。<br><br>👉 <b>【往下拉】</b> 即可閱讀本次解鎖的完整文學核心意象解析！`;
                 
-                // 🚀 亮點：通關成功後，對照表才會帥氣登場！
+                // 🚀 修正：修復多打一個 .style 導致對照表在通關時出不來的 Bug
                 meaningBox.style.display = 'block';
             } else {
                 endTitle.innerHTML = "⌛ 時間耗盡或分數不足";
-                endDesc.innerHTML = `<b>最終得分：${score} 分（目標 100 分）</b><br><br>可惜，歷史的真相被埋沒在虛華的政治宣傳中了。重新再試一次，專注捕捉『十字鎬、血汗勞動、榮民之家、孤寂邊緣』這些屬於陳列文中老兵的生命真實！`;
+                endDesc.innerHTML = `<b>最終得分：${score} 分（目標 100 分）</b><br><br>可惜，歷史的真相被埋沒在虛華的政治宣傳中了。重新再試一次，專注捕捉『思鄉情愁、不屈不撓、淡泊名利』這些屬於陳列文中老兵的內心世界與生命真實！`;
                 meaningBox.style.display = 'none';
             }
         }
